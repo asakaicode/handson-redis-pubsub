@@ -1,13 +1,25 @@
 version: '3'
-services:
-  redis:
-    image: redis:latest
-    ports: 
-      - "6379:6379"
 
-  app:
-    build: .
-    volumes:
-      - .:/app
-    depends_on:
-      - redis
+services:
+  notification-app:
+    build: 
+      context: ./notification-app
+      dockerfile: Dockerfile
+    ports:
+      - "9100:9100"
+    environment:
+      - REDIS_URL=redis://redis:6379
+
+  like-app:
+    build: 
+      context: ./like-app
+      dockerfile: Dockerfile
+    ports:
+      - "9101:9101"
+    environment:
+      - REDIS_URL=redis://redis:6379
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
