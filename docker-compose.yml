@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  notification-app:
+  notification-demo:
     build: 
-      context: ./notification-app
+      context: ./notification-demo
       dockerfile: Dockerfile
     ports:
       - "9100:9100"
