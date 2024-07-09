@@ -6,7 +6,7 @@ const App = () => {
   const [notifications, setNotifications] = useState<string[]>([])
 
   useEffect(() => {
-    const socket = io('http://localhost:9100')
+    const socket = io('http://localhost:3000')
     socket.on('notification', (message: string) => {
       setNotifications((prev) => [...prev, message])
     })

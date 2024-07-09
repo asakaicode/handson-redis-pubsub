@@ -10,7 +10,7 @@ const io = new Server(server, {
 })
 
 // Redis
-const redis = new Redis()
+const redis = new Redis(process.env.REDIS_URL || "")
 const subscriber = redis.duplicate()
 
 subscriber.subscribe('likes')

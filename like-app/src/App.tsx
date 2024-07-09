@@ -4,7 +4,7 @@ import './App.css';
 const App = () => {
   const handleLike = async () => {
     try {
-      await axios.post('http://localhost:9100/like')
+      await axios.post('http://localhost:3000/like')
       alert('いいねを送信しました！')
     } catch (error) {
       console.error('Error sending like:', error)
