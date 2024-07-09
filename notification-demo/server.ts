@@ -19,7 +19,7 @@ subscriber.on('message', (channel, message) => {
   io.emit('notification', message)
 })
 
-const PORT = 9100
+const PORT = 3000
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`)
 })
