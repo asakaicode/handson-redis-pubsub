@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import { io } from 'socket.io-client';
 
@@ -16,14 +16,20 @@ const App = () => {
     }
   }, [])
 
-  return (
-    <div className="App">
-      <h1>通知アプリ</h1>
+  const renderNotifications = useCallback(() => {
+    return ( 
       <ul>
         {notifications.map((notification, index) => (
           <li key={index}>{notification}</li>
         ))}
       </ul>
+      )
+  }, [notifications])
+
+  return (
+    <div className="App">
+      <h1>通知アプリ</h1>
+      {renderNotifications()}
     </div>
   );
 }
