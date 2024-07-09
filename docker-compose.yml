@@ -9,6 +9,8 @@ services:
       - "9100:3000"
     environment:
       - REDIS_URL=redis://redis:6379
+    networks:
+      - app-network
 
   like-app:
     build: 
@@ -18,8 +20,14 @@ services:
       - "9101:3000"
     environment:
       - REDIS_URL=redis://redis:6379
+    networks:
+      - app-network
 
   redis:
     image: redis:alpine
     ports:
       - "6379:6379"
+
+networks:
+  app-network:
+    driver: bridge
